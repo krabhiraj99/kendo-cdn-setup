@@ -18,6 +18,11 @@
                   :sort="sort"
                   @sortchange="sortChangeHandler"
                  :columns = "columns">
+                 <template v-slot:pdt="{ props }">
+                    <td>
+                      {{ props.dataItem }}
+                    </td>
+                </template>
       </k-grid>
       
   </div>
@@ -47,7 +52,7 @@ import { orderBy } from '@progress/kendo-data-query';
       },
       columns: [
         { field: 'ProductID'},
-        { field: 'ProductName', title: 'Product Name' },
+        { field: 'ProductName', title: 'Product Name', cell:"pdt" },
         { field: 'UnitPrice', title: 'Unit Price' }
       ],
       sports: [ 'Basketball', 'Football', 'Tennis', 'Volleyball' ],
